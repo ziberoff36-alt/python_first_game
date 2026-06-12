@@ -2,7 +2,6 @@ from characters import Mage, Tank, Rogue, WeakGoblin, Goblin
 from battle import battle
 from shop import shop
 from save import save, restore, reset
-from character_creation import player_creation
 
 player = None
 print('Добро пожаловать в мир RPG!')
