@@ -36,6 +36,7 @@ def battle(player, enemy):
             enemy.show_stats()
         elif battle_choice == 4:
             print("Вы успешно сбежали!\nВы получили 0 золота и 0 опыта")
+            save(player)
             return
     if player.health <= 0:
         print("Вы погибли! Возвращаем вас в главное меню...")

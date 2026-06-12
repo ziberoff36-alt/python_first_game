@@ -1,7 +1,7 @@
 from characters import Mage, Tank, Rogue, WeakGoblin, Goblin
 from battle import battle
 from shop import shop
-from save import save, restore, reset
+from save import save, restore, reset, load
 
 player = None
 print('Добро пожаловать в мир RPG!')
@@ -68,7 +68,7 @@ while True:
         save(player)
         input("Поздравляем! Вы создали персонажа! Нажмите Enter, чтобы продолжить.")
     elif choice == 2:
-        if player is None:
+        if load() is None:
             print("Сохранение не найдено! Сначала создайте персонажа.")
             continue
         player = restore()
