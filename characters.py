@@ -24,6 +24,12 @@ class Character:
         print(f"Имя: {self.name}\nУровень: {self.level}\nДеньги: {self.money}")
         print(f"Здоровье: {self.health}\nУрон: {self.attack}\nЗащита: {self.defense}\nКласс: {self.character_class}")
         print(f"Опыт: {self.exp}\nНеобходимый опыт для поднятия уровня: {self.exp_needed}")
+        if not self.inventory:
+            print("Инвентарь пуст")
+        else:
+            print("Инвентарь:")
+            for item in self.inventory:
+                print(item["name"])
     def show_stats_registration(self):
         print(f"Стартовые деньги: {self.money}, Здоровье: {self.health}")
         print(f"Стартовый урон: {self.attack}, Стартовая защита: {self.defense}")
