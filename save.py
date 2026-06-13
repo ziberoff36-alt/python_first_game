@@ -40,7 +40,7 @@ def restore():
     player.money = save_data["money"]
     player.attack = save_data["attack"]
     player.defense = save_data["defense"]
-    player.inventory = save_data["inventory"]
+    player.inventory = save_data.get("inventory", [])
     return player
 def reset():
     if os.path.exists("save.json"):
