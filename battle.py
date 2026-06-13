@@ -36,19 +36,23 @@ def battle(player, enemy):
         print("1. Атаковать")
         print("2. Защищаться")
         print("3. Проверить врага")
-        print("4. Бежать")
-        battle_choice = get_choice(4)
-        if battle_choice == 1:
-            attack_battle(player, enemy)
-            attack_battle(enemy, player)
-        elif battle_choice == 2:
-            defense_battle(player, enemy)
-        elif battle_choice == 3:
-            enemy.show_stats()
-        elif battle_choice == 4:
-            print("Вы успешно сбежали!\nВы получили 0 золота и 0 опыта")
-            save(player)
-            return
+        print("4. Применить расходник")
+        print("5. Бежать")
+        battle_choice = get_choice(5)
+        match battle_choice:
+            case 1:
+                attack_battle(player, enemy)
+                attack_battle(enemy, player)
+            case 2:
+                defense_battle(player, enemy)
+            case 3:
+                enemy.show_stats()
+            case 4:
+                print("В разработке...")
+            case 5:
+                print("Вы успешно сбежали!\nВы получили 0 золота и 0 опыта")
+                save(player)
+                return
     if player.health <= 0:
         print("Вы погибли! Возвращаем вас в главное меню...")
         player.health = player.max_health
