@@ -1,4 +1,5 @@
 from save import save
+from support_functions import get_choice
 def shop(player):
     while True:
         print(">>>Магазин<<<")
@@ -6,18 +7,16 @@ def shop(player):
         print("2. Доспех пехотинца\n+5 защиты, цена: 75  золотых")
         print("3. Эссенция жизни\n+20 здоровья, цена 125 золотых")
         print("4. Выход")
-        try:
-            shop_choice = int(input("Ваш выбор:"))
-        except ValueError:
-            print("Выберите только из предложенных вариантов")
-            continue
-        if shop_choice > 4 or shop_choice < 1:
-            print("Выберите только из предложенных вариантов")
-            continue
+        shop_choice = get_choice(4)
 
         if shop_choice == 1:
+            if any(item["name"] == "Кристалл урона" for item in player.inventory):
+                print("У вас уже есть этот предмет!")
+                continue
             if player.money >= 100:
-                player.attack += 10
+                item = {"name": "Кристалл урона", "attack": 10}
+                player.inventory.append(item)
+                player.attack += item["attack"]
                 player.money -= 100
                 print("Вы успешно купили кристалл урона!")
             else:
@@ -25,8 +24,13 @@ def shop(player):
                 continue
 
         elif shop_choice == 2:
+            if any(item["name"] == "Доспех пехотинца" for item in player.inventory):
+                print("У вас уже есть этот предмет!")
+                continue
             if player.money >= 75:
-                player.defense += 5
+                item = {"name": "Доспех пехотинца", "defense": 5}
+                player.inventory.append(item)
+                player.defense += item["defense"]
                 player.money -= 75
                 print("Вы успешно купили доспех пехотинца!")
             else:
@@ -34,9 +38,14 @@ def shop(player):
                 continue
 
         elif shop_choice == 3:
+            if any(item["name"] == "Эссенция жизни" for item in player.inventory):
+                print("У вас уже есть этот предмет!")
+                continue
             if player.money >= 125:
-                player.max_health += 20
-                player.health += 20
+                item = {"name": "Эссенция жизни", "health": 20, "max_health": 20}
+                player.inventory.append(item)
+                player.health += item["health"]
+                player.max_health += item["max_health"]
                 player.money -= 125
                 print("Вы успешно купили эссенцию жизни!")
             else:
