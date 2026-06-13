@@ -8,7 +8,6 @@ def shop(player):
         print("3. Эссенция жизни\n+20 здоровья, цена 125 золотых")
         print("4. Выход")
         shop_choice = get_choice(4)
-
         if shop_choice == 1:
             if any(item["name"] == "Кристалл урона" for item in player.inventory):
                 print("У вас уже есть этот предмет!")
@@ -22,7 +21,6 @@ def shop(player):
             else:
                 print("У вас недостаточно золота!")
                 continue
-
         elif shop_choice == 2:
             if any(item["name"] == "Доспех пехотинца" for item in player.inventory):
                 print("У вас уже есть этот предмет!")
@@ -36,7 +34,6 @@ def shop(player):
             else:
                 print("У вас недостаточно золота!")
                 continue
-
         elif shop_choice == 3:
             if any(item["name"] == "Эссенция жизни" for item in player.inventory):
                 print("У вас уже есть этот предмет!")
@@ -51,7 +48,6 @@ def shop(player):
             else:
                 print("У вас недостаточно золота!")
                 continue
-
         elif shop_choice == 4:
             print(f"До свидания, {player.name}!")
             save(player)

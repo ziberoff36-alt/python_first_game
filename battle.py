@@ -1,5 +1,6 @@
 from save import save
 import random
+from support_functions import get_choice
 def start_battle(player, enemy):
     print("Начинается бой!")
     print(f"{player.name} (HP: {player.health}) vs {enemy.name} (HP: {enemy.health})")
@@ -35,14 +36,7 @@ def battle(player, enemy):
         print("2. Защищаться")
         print("3. Проверить врага")
         print("4. Бежать")
-        try:
-            battle_choice = int(input("Ваш выбор:"))
-        except ValueError:
-            print("Выберите только из предложенных вариантов")
-            continue
-        if battle_choice > 4 or battle_choice < 1:
-            print("Выберите только из предложенных вариантов")
-            continue
+        battle_choice = get_choice(4)
         if battle_choice == 1:
             attack_battle(player, enemy)
             attack_battle(enemy, player)

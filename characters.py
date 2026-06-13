@@ -30,11 +30,9 @@ class Character:
 class Mage(Character):
     def __init__(self, name):
         super().__init__(name, level=1, money=0, health=80, max_health=80, attack=35, defense=5, character_class="Маг")
-
 class Tank(Character):
     def __init__(self, name):
         super().__init__(name, level=1, money=0, health=150, max_health=150, attack=10, defense=25, character_class="Танк")
-
 class Rogue(Character):
     def __init__(self, name):
         super().__init__(name, level=1, money=100, health=100, max_health=100, attack=20, defense=15, character_class="Разбойник")

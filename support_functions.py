@@ -35,7 +35,6 @@ def register_player():
         print("Характеристики:")
         rogue_registration = Rogue(name)
         rogue_registration.show_stats_registration()
-
         registration_choice = get_choice(3)
         match registration_choice:
             case 1:
