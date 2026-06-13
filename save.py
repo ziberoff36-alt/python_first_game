@@ -1,5 +1,5 @@
 import json
-from characters import *
+from characters import Mage, Tank, Rogue
 import os
 
 def save(player):
