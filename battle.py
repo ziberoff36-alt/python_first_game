@@ -17,9 +17,15 @@ def attack_battle(attacker, defender):
         defender.health -= damage
         print(f"{attacker.name} наносит {damage} урона! У {defender.name} осталось {defender.health} HP")
 def defense_battle(defender, attacker):
-    damage = max(attacker.attack - (defender.defense * 2), 1)
-    defender.health -= damage
-    print(f"{attacker.name} наносит {damage} урона! У {defender.name} осталось {defender.health} HP")
+    random_defense = random.randint(1, 100)
+    if random_defense <= 20:
+        counter_attack = defender.attack * 2
+        attacker.health -= counter_attack
+        print(f"{defender.name} контратакует и наносит {counter_attack} урона! У {attacker.name} осталось {attacker.health} HP")
+    else:
+        damage = max(attacker.attack - (defender.defense * 2), 1)
+        defender.health -= damage
+        print(f"{attacker.name} наносит {damage} урона! У {defender.name} осталось {defender.health} HP")
 def battle(player, enemy):
     start_battle(player, enemy)
     while player.health > 0 and enemy.health > 0:
