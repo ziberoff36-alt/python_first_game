@@ -1,6 +1,7 @@
 from save import save
 import random
 from support_functions import get_choice
+
 def start_battle(player, enemy):
     print("Начинается бой!")
     print(f"{player.name} (HP: {player.health}) vs {enemy.name} (HP: {enemy.health})")

@@ -1,5 +1,6 @@
 from save import save
 from characters import Mage, Tank, Rogue
+
 def get_choice(max_value):
     while True:
         try:
