@@ -22,6 +22,9 @@ while True:
             save(player)
         break
     elif choice == 1:
+        if load() is not None:
+            print("У вас уже есть персонаж! Удалите сохранение, чтобы создать нового.")
+            continue
         player = register_player()
     elif choice == 2:
         if load() is None:
