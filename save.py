@@ -13,7 +13,8 @@ def save(player):
         "defense": player.defense,
         "exp": player.exp,
         "exp_needed": player.exp_needed,
-        "character_class": player.character_class
+        "character_class": player.character_class,
+        "inventory": player.inventory
     }
     with open("save.json", "w") as file:
         json.dump(data, file)
@@ -39,6 +40,7 @@ def restore():
     player.money = save_data["money"]
     player.attack = save_data["attack"]
     player.defense = save_data["defense"]
+    player.inventory = save_data["inventory"]
     return player
 def reset():
     if os.path.exists("save.json"):
