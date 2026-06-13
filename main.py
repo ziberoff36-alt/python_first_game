@@ -2,6 +2,7 @@ from characters import Mage, Tank, Rogue, WeakGoblin, Goblin
 from battle import battle
 from shop import shop
 from save import save, restore, reset, load
+from support_for_main import get_choice
 
 player = None
 print('Добро пожаловать в мир RPG!')
@@ -11,14 +12,8 @@ while True:
     print('Выберите "2", чтобы играть.')
     print('Выберите "3", чтобы покинуть игру.')
     print('Выберите "4", чтобы удалить сохранение.')
-    try:
-        choice = int(input("Ваш выбор:"))
-    except ValueError:
-        print("Введите цифру, а не слово!")
-        continue
-    if choice > 4 or choice < 1:
-        print("Выберите только из предложенных вариантов")
-        continue
+
+    choice = get_choice(4)
     if choice == 4:
         reset()
         continue
@@ -50,14 +45,8 @@ while True:
         print("Характеристики:")
         rogue_registration = Rogue(name)
         rogue_registration.show_stats_registration()
-        try:
-            registration_choice = int(input("Ваш выбор:"))
-        except ValueError:
-            print("Выберите номер класса")
-            continue
-        if registration_choice > 3 or registration_choice < 1:
-            print("Введите предложенный номер класса!")
-            continue
+
+        registration_choice = get_choice(3)
         match registration_choice:
             case 1:
                 player = Mage(name)
@@ -79,25 +68,12 @@ while True:
             print("2. Магазин")
             print("3. Характеристики")
             print("4. Выход")
-            try:
-                menu_choice = int(input("Ваш выбор:"))
-            except ValueError:
-                print("Выберите только из предложенных вариантов")
-                continue
-            if menu_choice > 4 or menu_choice < 1:
-                print("Выберите только из предложенных вариантов")
-                continue
+            menu_choice = get_choice(4)
 
             if menu_choice == 1:
                 print("Выберите сложность:\n1. Легкая\n2. Нормальная")
-                try:
-                    dungeon_choice = int(input("Ваш выбор:"))
-                except ValueError:
-                    print("Выберите только из предложенных вариантов")
-                    continue
-                if dungeon_choice > 2 or dungeon_choice < 1:
-                    print("Выберите только из предложенных вариантов")
-                    continue
+                dungeon_choice = get_choice(2)
+
                 if dungeon_choice == 1:
                     weak_goblin = WeakGoblin()
                     battle(player, weak_goblin)
@@ -107,10 +83,8 @@ while True:
 
             elif menu_choice == 2:
                 shop(player)
-
             elif menu_choice == 3:
                 player.show_stats()
-
             elif menu_choice == 4:
                 print(f"До свидания, {player.name}")
                 break
