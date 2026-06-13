@@ -29,7 +29,7 @@ class Character:
         else:
             print("Инвентарь:")
             for item in self.inventory:
-                print(item["name"])
+                print(f"{item['name']}: {item['count']} шт.")
     def show_stats_registration(self):
         print(f"Стартовые деньги: {self.money}, Здоровье: {self.health}")
         print(f"Стартовый урон: {self.attack}, Стартовая защита: {self.defense}")
