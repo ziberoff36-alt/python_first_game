@@ -3,7 +3,7 @@ from characters import Mage, Tank, Rogue
 def get_choice(max_value):
     while True:
         try:
-            choice = int(input("Ваш выбор"))
+            choice = int(input("Ваш выбор:"))
         except ValueError:
             print("Выберите только из предложенных вариантов")
             continue
