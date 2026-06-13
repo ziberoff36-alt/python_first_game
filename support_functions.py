@@ -12,6 +12,27 @@ def get_choice(max_value):
             print("Выберите только из предложенных вариантов")
             continue
         return choice
+def use_consumable(player):
+    while True:
+        consumable = [item for item in player.inventory if item["type"] == "consumable"]
+        if not consumable:
+            print("У вас нет расходников!")
+            break
+        print(">>>Расходники<<<")
+        for i, item in enumerate(consumable, start=1):
+            print(f"{i}. {item['name']} ({item['count']} шт.) - восстанавливает {item['health']} HP.")
+        print(f"{len(consumable) + 1}. Отмена")
+        consumable_choice = get_choice(len(consumable) + 1)
+        if consumable_choice == len(consumable) + 1:
+            break
+        else:
+            chosen = consumable[consumable_choice - 1]
+            player.health = min(player.max_health, player.health + chosen["health"])
+            chosen["count"] -= 1
+            if chosen["count"] == 0:
+                player.inventory.remove(chosen)
+            print(f"Вы использовали {chosen['name']}")
+            break
 def register_player():
     while True:
         name = input("Введите имя вашего персонажа:")
