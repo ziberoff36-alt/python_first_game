@@ -1,6 +1,7 @@
 from save import save
 import random
-from support_functions import get_choice
+from support_functions import get_choice, use_consumable
+
 
 def start_battle(player, enemy):
     print("Начинается бой!")
@@ -48,7 +49,7 @@ def battle(player, enemy):
             case 3:
                 enemy.show_stats()
             case 4:
-                print("В разработке...")
+                use_consumable(player)
             case 5:
                 print("Вы успешно сбежали!\nВы получили 0 золота и 0 опыта")
                 save(player)
