@@ -10,6 +10,7 @@ class Character:
         self.character_class = character_class
         self.exp = 0
         self.exp_needed = 100
+        self.inventory = []
     def lvl_up(self):
         while self.exp >= self.exp_needed and self.level < 100:
             self.level += 1
