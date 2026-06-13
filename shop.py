@@ -17,11 +17,11 @@ def shop(player):
                 print("У вас уже есть этот предмет!")
                 continue
             if player.money >= 100:
-                item = {"name": "Кристалл урона", "attack": 10, "count": 1}
+                item = {"name": "Кристалл урона", "attack": 10, "count": 1, "type": "gear"}
                 player.inventory.append(item)
                 player.attack += item["attack"]
                 player.money -= 100
-                print("Вы успешно купили кристалл урона!")
+                print("Вы успешно купили Кристалл урона!")
             else:
                 print("У вас недостаточно золота!")
                 continue
@@ -30,11 +30,11 @@ def shop(player):
                 print("У вас уже есть этот предмет!")
                 continue
             if player.money >= 75:
-                item = {"name": "Доспех пехотинца", "defense": 5, "count": 1}
+                item = {"name": "Доспех пехотинца", "defense": 5, "count": 1, "type": "gear"}
                 player.inventory.append(item)
                 player.defense += item["defense"]
                 player.money -= 75
-                print("Вы успешно купили доспех пехотинца!")
+                print("Вы успешно купили Доспех пехотинца!")
             else:
                 print("У вас недостаточно золота!")
                 continue
@@ -43,12 +43,12 @@ def shop(player):
                 print("У вас уже есть этот предмет!")
                 continue
             if player.money >= 125:
-                item = {"name": "Эссенция жизни", "health": 20, "max_health": 20, "count": 1}
+                item = {"name": "Эссенция жизни", "health": 20, "max_health": 20, "count": 1, "type": "gear"}
                 player.inventory.append(item)
                 player.health += item["health"]
                 player.max_health += item["max_health"]
                 player.money -= 125
-                print("Вы успешно купили эссенцию жизни!")
+                print("Вы успешно купили Эссенцию жизни!")
             else:
                 print("У вас недостаточно золота!")
                 continue
@@ -58,9 +58,13 @@ def shop(player):
                 if existing is not None:
                     existing["count"] += 1
                 else:
-                    item = {"name": "Зелье исцеления", "health": 20, "count": 1}
+                    item = {"name": "Зелье исцеления", "health": 20, "count": 1, "type": "consumable"}
                     player.inventory.append(item)
+                print("Вы успешно купили Зелье исцеления!")
                 player.money -= 50
+            else:
+                print("У вас недостаточно золота!")
+                continue
         elif shop_choice == 5:
             print(f"До свидания, {player.name}!")
             save(player)
